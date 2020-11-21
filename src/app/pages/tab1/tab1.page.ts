@@ -14,9 +14,24 @@ export class Tab1Page implements OnInit {
   constructor( private noticiasService: NoticiasService) {}
 
   ngOnInit(){
-    this.noticiasService.getTopHeadLines().subscribe(resp => {console.log(resp);
-                                                              this.noticias.push(...resp.articles); }
-                                                              );
+    this.cargarNoticias();
+  }
+
+  loadData(event){
+    this.cargarNoticias(event);
+  }
+
+  cargarNoticias( event?){
+    this.noticiasService.getTopHeadLines()
+      .subscribe( resp => {
+        if (resp.articles.length > 0){
+          this.noticias.push(...resp.articles);
+        }
+        if (event){
+          event.target.complete();
+          event.target.disabled = (resp.articles.length === 0);
+        }
+      });
   }
 
 }

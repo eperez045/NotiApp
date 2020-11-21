@@ -1,12 +1,27 @@
 <ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>{{noticia.source.name}}</ion-card-subtitle>
-    <ion-card-title>{{noticia.title}}</ion-card-title>
+  <ion-card-header (click)="abrirNoticia()">
+    <ion-img *ngIf="noticia.urlToImage" [src]="noticia.urlToImage"></ion-img>
+    <ion-card-subtitle>
+      {{noticia.source.name}}
+    </ion-card-subtitle>
+    <ion-card-title >{{noticia.title}}</ion-card-title>
   </ion-card-header>
-  <ion-img *ngIf="noticia.urlToImage" [src]="noticia.urlToImage"></ion-img>
+  
   <ion-card-content>
     <p>
       {{noticia.description}}
     </p>
+    <ion-toolbar>
+      <ion-buttons slot="secondary">
+        <ion-button (click)="darFav()">
+          <ion-icon slot="icon-only" [name]="fav ? 'heart': 'heart-outline'" class="danger"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+        <ion-button (click)="compartir()">
+          <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
   </ion-card-content>
 </ion-card>
