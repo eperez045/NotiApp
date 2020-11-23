@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Article } from '../../interfaces/interfaces';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { DataLocalService } from '../../services/data-local.service';
 
 @Component({
   selector: 'app-noticia',
@@ -15,7 +16,8 @@ export class NoticiaComponent implements OnInit {
   @Input() noticia: Article;
 
   constructor(private iab: InAppBrowser,
-              private socialSharing: SocialSharing) { }
+              private socialSharing: SocialSharing,
+              private dataLocalService: DataLocalService) { }
 
   ngOnInit() {}
 
@@ -35,6 +37,7 @@ export class NoticiaComponent implements OnInit {
 
   darFav(){
     console.log('dio fav');
+    this.dataLocalService.guardarNoticia(this.noticia);
     this.fav = !this.fav;
   }
 
