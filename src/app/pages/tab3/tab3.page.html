@@ -8,6 +8,13 @@
 
 <ion-content [fullscreen]="true">
 
-  <app-noticias [noticias]="dataLocalService.noticias"></app-noticias>
+  <ion-slides mode="ios" pager="ios" scrollbar="ios" *ngIf="dataLocalService.noticias.length === 0">
+    <ion-slide>
+      <ion-label>Todavia no tienes ningún favorito, dale al corazón</ion-label>
+    </ion-slide>
+  </ion-slides>
+  
+
+  <app-noticias [noticias]="dataLocalService.noticias" *ngIf="dataLocalService.noticias.length > 0"></app-noticias>
 
 </ion-content>
