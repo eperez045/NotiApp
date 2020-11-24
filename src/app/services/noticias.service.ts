@@ -28,10 +28,14 @@ export class NoticiasService {
 
     getTopHeadLines(){
       this.headLinesPage ++;
-      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&page=${this.headLinesPage}`);
+      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=mx&page=${this.headLinesPage}`);
     }
 
     getTopHeadLinesCategoria(categoria: string){
       return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=mx&category=${categoria}`);
+    }
+
+    searchByWord(word: string){
+      return this.ejecutarQuery<RespuestaTopHeadlines>(`q=${word}&from=2020-10-24&sortBy=publishedAt`);
     }
 }
