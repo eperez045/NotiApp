@@ -28,11 +28,11 @@ export class NoticiasService {
 
     getTopHeadLines(){
       this.headLinesPage ++;
-      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=mx&page=${this.headLinesPage}`);
+      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&page=${this.headLinesPage}`);
     }
 
     getTopHeadLinesCategoria(categoria: string){
-      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=mx&category=${categoria}`);
+      return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&category=${categoria}`);
     }
 
     searchByWord(word: string){
