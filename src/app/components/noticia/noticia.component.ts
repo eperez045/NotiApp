@@ -14,12 +14,16 @@ export class NoticiaComponent implements OnInit {
   fav: boolean = false;
 
   @Input() noticia: Article;
+  @Input() enfav;
+
 
   constructor(private iab: InAppBrowser,
               private socialSharing: SocialSharing,
               private dataLocalService: DataLocalService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('favoritos', this.enfav);
+  }
 
   abrirNoticia(){
     console.log('Noticia', this.noticia.url);
@@ -36,9 +40,16 @@ export class NoticiaComponent implements OnInit {
   }
 
   darFav(){
-    console.log('dio fav');
-    this.dataLocalService.guardarNoticia(this.noticia);
-    this.fav = !this.fav;
+    if (this.enfav){
+      console.log('quito fav');
+      this.dataLocalService.borrarNoticia(this.noticia);
+      this.fav = !this.fav;
+    }else{
+      console.log('dio fav');
+      this.dataLocalService.guardarNoticia(this.noticia);
+      this.fav = !this.fav;
+    }
   }
+  
 
 }

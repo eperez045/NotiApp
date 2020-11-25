@@ -17,7 +17,8 @@
       </ion-card-subtitle>
       <ion-buttons slot="secondary">
         <ion-button (click)="darFav()">
-          <ion-icon slot="icon-only" [name]="fav ? 'heart': 'heart-outline'" [color]="fav ? 'danger' : 'dark'"></ion-icon>
+          <ion-icon *ngIf="this.enfav" slot="icon-only" name="trash"></ion-icon>
+          <ion-icon *ngIf="!this.enfav" slot="icon-only" [name]="fav ? 'heart': 'heart-outline'" [color]="fav ? 'danger' : 'dark'"></ion-icon>
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="primary">
