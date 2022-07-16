@@ -1,9 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 import { RespuestaTopHeadlines } from '../interfaces/interfaces';
 
-
+export const environment = {
+  production: true,
+  apikey: '87aa457d70984b7394bac5210594af51',
+  apiUrl: 'http://newsapi.org/v2',
+};
 
 const apiKey = environment.apikey;
 const apiUrl = environment.apiUrl;
